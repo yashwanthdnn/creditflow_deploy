@@ -1,0 +1,83 @@
+# Configurable Loan Product Rules for AI Pre-Screening Prototype
+# Severity levels: BLOCKING (halts automated pass), WARNING (flags review), INFO
+
+rules:
+  - id: "RULE_AGE_MIN"
+    name: "Minimum Applicant Age"
+    description: "Applicant must be at least 18 years of age at the time of application."
+    field: "age"
+    operator: ">="
+    value: 18
+    severity: "BLOCKING"
+    human_review_required: true
+    failure_explanation: "Applicant age is below the legal minimum age threshold of 18 years."
+
+  - id: "RULE_AGE_MAX"
+    name: "Maximum Working Age at Loan Term"
+    description: "Applicant age plus loan tenure must not exceed 65 years."
+    field: "age_at_maturity"
+    operator: "<="
+    value: 65
+    severity: "WARNING"
+    human_review_required: true
+    failure_explanation: "Applicant will exceed the standard working age limit of 65 before loan maturity."
+
+  - id: "RULE_MIN_INCOME"
+    name: "Minimum Monthly Income"
+    description: "Applicant must have a verified monthly income of at least 15,000."
+    field: "monthly_income"
+    operator: ">="
+    value: 15000.0
+    severity: "BLOCKING"
+    human_review_required: true
+    failure_explanation: "Declared monthly income is below the minimum baseline required for credit assessment."
+
+  - id: "RULE_MAX_DTI"
+    name: "Debt-to-Income / FOIR Ceiling"
+    description: "Total monthly obligations (existing + proposed EMI) must not exceed 55% of monthly income."
+    field: "dti_ratio"
+    operator: "<="
+    value: 0.55
+    severity: "BLOCKING"
+    human_review_required: true
+    failure_explanation: "Projected debt-to-income ratio exceeds 55%, indicating high debt service stress."
+
+  - id: "RULE_MIN_BUREAU_SCORE"
+    name: "Minimum Credit Bureau Score"
+    description: "Credit score, if available, must meet or exceed 600 for pre-screening continuation."
+    field: "credit_score"
+    operator: ">="
+    value: 600
+    severity: "WARNING"
+    human_review_required: true
+    failure_explanation: "Credit bureau score is below 600 or indicates adverse credit history."
+
+  - id: "RULE_MAX_LOAN_TO_INCOME"
+    name: "Loan-to-Annual-Income Ratio"
+    description: "Requested loan amount should not exceed 10 times the applicant's annual income."
+    field: "loan_to_annual_income"
+    operator: "<="
+    value: 10.0
+    severity: "WARNING"
+    human_review_required: true
+    failure_explanation: "Requested loan amount is more than 10 times annual declared income."
+
+  - id: "RULE_MIN_EMPLOYMENT_TENURE"
+    name: "Employment Stability"
+    description: "Employed or self-employed applicants should have at least 6 months continuous tenure."
+    field: "employment_months"
+    operator: ">="
+    value: 6
+    severity: "INFO"
+    human_review_required: false
+    failure_explanation: "Applicant employment history is under 6 months; supplemental documentation may be needed."
+
+  - id: "RULE_CONSENT_ACKNOWLEDGED"
+    name: "Regulatory Consent & Data Privacy"
+    description: "Mandatory applicant consent for credit checks and data processing must be explicitly granted."
+    field: "consent_given"
+    operator: "=="
+    value: true
+    severity: "BLOCKING"
+    human_review_required: false
+    failure_explanation: "Applicant has not provided mandatory privacy and credit-inquiry consent."

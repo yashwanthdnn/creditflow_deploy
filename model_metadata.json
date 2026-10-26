@@ -1,0 +1,71 @@
+{
+  "model_version": "v1.2-academic",
+  "selected_model": "LogisticRegression",
+  "training_date": "2026-10-26 13:53:23Z",
+  "target_definition": "1 = Default on loan within 24 months, 0 = Non-default",
+  "features_used": [
+    "age",
+    "monthly_income",
+    "requested_loan_amount",
+    "loan_tenure_months",
+    "existing_monthly_obligations",
+    "employment_months",
+    "dependents",
+    "credit_score",
+    "previous_defaults_count",
+    "dti_ratio"
+  ],
+  "train_samples": 4000,
+  "test_samples": 1000,
+  "comparison_metrics": {
+    "LogisticRegression": {
+      "accuracy": 0.75,
+      "precision": 0.7726,
+      "recall": 0.7523,
+      "f1_score": 0.7624,
+      "confusion_matrix": [
+        [
+          349,
+          118
+        ],
+        [
+          132,
+          401
+        ]
+      ]
+    },
+    "DecisionTree": {
+      "accuracy": 0.72,
+      "precision": 0.7155,
+      "recall": 0.788,
+      "f1_score": 0.75,
+      "confusion_matrix": [
+        [
+          300,
+          167
+        ],
+        [
+          113,
+          420
+        ]
+      ]
+    },
+    "RandomForest": {
+      "accuracy": 0.74,
+      "precision": 0.7532,
+      "recall": 0.7617,
+      "f1_score": 0.7575,
+      "confusion_matrix": [
+        [
+          334,
+          133
+        ],
+        [
+          127,
+          406
+        ]
+      ]
+    }
+  },
+  "disclaimer": "This model was trained on an academic synthetic credit distribution. It must not be utilized for unmonitored production loan underwriting."
+}

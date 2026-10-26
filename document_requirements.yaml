@@ -1,0 +1,92 @@
+# Configurable Document Requirements by Loan Product Type
+
+products:
+  PERSONAL_LOAN:
+    name: "Unsecured Personal Loan"
+    mandatory_documents:
+      - "IDENTITY_PROOF"
+      - "ADDRESS_PROOF"
+      - "PHOTOGRAPH"
+      - "INCOME_PROOF"
+    optional_documents:
+      - "BANK_STATEMENT"
+      - "EMPLOYMENT_PROOF"
+      - "TAX_DOCUMENT"
+
+  EDUCATION_LOAN:
+    name: "Higher Education Loan"
+    mandatory_documents:
+      - "IDENTITY_PROOF"
+      - "ADDRESS_PROOF"
+      - "PHOTOGRAPH"
+      - "ADMISSION_LETTER"
+      - "CO_APPLICANT_INCOME_PROOF"
+    optional_documents:
+      - "BANK_STATEMENT"
+      - "FEE_STRUCTURE"
+
+  HOME_LOAN:
+    name: "Residential Property Loan"
+    mandatory_documents:
+      - "IDENTITY_PROOF"
+      - "ADDRESS_PROOF"
+      - "PHOTOGRAPH"
+      - "INCOME_PROOF"
+      - "BANK_STATEMENT"
+      - "PROPERTY_DOCUMENTS"
+    optional_documents:
+      - "TAX_DOCUMENT"
+      - "CO_APPLICANT_DOCUMENTS"
+
+  AUTO_LOAN:
+    name: "Vehicle Purchase Loan"
+    mandatory_documents:
+      - "IDENTITY_PROOF"
+      - "ADDRESS_PROOF"
+      - "PHOTOGRAPH"
+      - "INCOME_PROOF"
+    optional_documents:
+      - "VEHICLE_PROFORMA_INVOICE"
+      - "BANK_STATEMENT"
+
+document_types:
+  IDENTITY_PROOF:
+    label: "Government Identity Document (Passport / PAN / National ID)"
+    allowed_formats: [".pdf", ".jpg", ".jpeg", ".png"]
+    max_size_mb: 5
+  ADDRESS_PROOF:
+    label: "Address Proof (Utility Bill / Lease / ID)"
+    allowed_formats: [".pdf", ".jpg", ".jpeg", ".png"]
+    max_size_mb: 5
+  PHOTOGRAPH:
+    label: "Applicant Photograph"
+    allowed_formats: [".jpg", ".jpeg", ".png"]
+    max_size_mb: 3
+  INCOME_PROOF:
+    label: "Salary Slip / Income Proof (Last 3 Months)"
+    allowed_formats: [".pdf", ".jpg", ".jpeg", ".png"]
+    max_size_mb: 10
+  BANK_STATEMENT:
+    label: "Bank Account Statement (6 Months)"
+    allowed_formats: [".pdf"]
+    max_size_mb: 10
+  TAX_DOCUMENT:
+    label: "Income Tax Return / Form 16"
+    allowed_formats: [".pdf"]
+    max_size_mb: 10
+  EMPLOYMENT_PROOF:
+    label: "Employment Certificate / Offer Letter / Staff ID"
+    allowed_formats: [".pdf", ".jpg", ".jpeg", ".png"]
+    max_size_mb: 5
+  ADMISSION_LETTER:
+    label: "Institutional Admission / Offer Letter"
+    allowed_formats: [".pdf"]
+    max_size_mb: 5
+  CO_APPLICANT_INCOME_PROOF:
+    label: "Co-Applicant Income / Guarantor Proof"
+    allowed_formats: [".pdf", ".jpg", ".jpeg", ".png"]
+    max_size_mb: 10
+  PROPERTY_DOCUMENTS:
+    label: "Property Title / Sale Deed / Agreement"
+    allowed_formats: [".pdf"]
+    max_size_mb: 15
